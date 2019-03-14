@@ -10,6 +10,9 @@
 #include <stdlib.h>
 #define N     50
 
+
+// removed barrier in print_results(). Each thread has to hit the same number of barriers. Otherwise the threads which hit more barriers will hang waiting for the other threads to hit the barriers which they will never see. Since there are two sections only two threads hit the extra barrier. 
+
 int main (int argc, char *argv[]) 
 {
 int i, nthreads, tid, section;
@@ -34,7 +37,8 @@ for (i=0; i<N; i++)
   printf("Thread %d starting...\n",tid);
   #pragma omp barrier
 
-  #pragma omp sections nowait
+    #pragma omp sections nowait
+    //#pragma omp sections
     {
     #pragma omp section
       {
@@ -83,7 +87,7 @@ void print_results(float array[N], int tid, int section)
     printf("\n");
   } /*** end of critical ***/
 
-  #pragma omp barrier
+  //#pragma omp barrier
   printf("Thread %d done and synchronized.\n", tid); 
 
 }

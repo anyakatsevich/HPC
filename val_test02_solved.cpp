@@ -17,7 +17,10 @@ int main ( )
 //    MAIN is the main program for TEST01.
 //
 //  Discussion:
-//
+//   The error was that only the first 5 elements of the array of size 10 were 
+//   initialized. However valgrind only complained when the uninitialized values 
+//   were printed. Using --track-origins=yes it showed... TO DO - USE DBG??
+//   Initializing all 10 values resolves the bug
 //    TEST02 has some uninitialized data.
 //
 //  Licensing:
@@ -78,7 +81,7 @@ void junk_data ( )
 //
 //  X = { 0, 1, 2, 3, 4, ?a, ?b, ?c, ?d, ?e }.
 //
-  for ( i = 0; i < 5; i++ )
+  for ( i = 0; i < 10; i++ )
   {
     x[i] = i;
   }

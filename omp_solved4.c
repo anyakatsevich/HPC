@@ -10,15 +10,18 @@
 #include <stdlib.h>
 #define N 1048
 
+//allocating array a using a[N][N] puts it on the stack, which can't allocate that much memory. We put it on the heap instead and free it at the end
+
 int main (int argc, char *argv[]) 
 {
-int nthreads, tid, i, j;
-double a[N][N];
+int nthreads, tid, i, j,k;
+double **a = (double **)malloc(N* sizeof(double *));
+for (k=0; k<N; k++) 
+         a[k] = (double *)calloc(N,sizeof(double));
 
 /* Fork a team of threads with explicit variable scoping */
-#pragma omp parallel shared(nthreads) private(i,j,tid,a)
+#pragma omp parallel shared(nthreads) private(i,j,tid) firstprivate(a)
   {
-
   /* Obtain/print thread info */
   tid = omp_get_thread_num();
   if (tid == 0) 
@@ -32,11 +35,11 @@ double a[N][N];
   for (i=0; i<N; i++)
     for (j=0; j<N; j++)
       a[i][j] = tid + i + j;
-
   /* For confirmation */
   printf("Thread %d done. Last element= %f\n",tid,a[N-1][N-1]);
-
   }  /* All threads join master thread and disband */
-
+for(k=0;k<N;k++)
+   free(a[k]);
+free(a);
 }
 

@@ -11,12 +11,13 @@
 #include <stdlib.h>
 #define VECLEN 100
 
-float a[VECLEN], b[VECLEN];
+
+// since we want to reduce the sum variable, it should be seen by all threads so wwe should declare it outside the function call. For the function to see it we need to make sum a global variable
+float a[VECLEN], b[VECLEN],sum;
 
 float dotprod ()
 {
 int i,tid;
-float sum;
 
 tid = omp_get_thread_num();
 #pragma omp for reduction(+:sum)
@@ -30,7 +31,7 @@ tid = omp_get_thread_num();
 
 int main (int argc, char *argv[]) {
 int i;
-float sum;
+//float sum;
 
 for (i=0; i < VECLEN; i++)
   a[i] = b[i] = 1.0 * i;
