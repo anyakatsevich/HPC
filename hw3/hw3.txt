@@ -1,0 +1,32 @@
+Question 1
+
+Output:
+
+Reference time: 46.2063
+Taylor time:    3.9716      Error: 6.928125e-12
+Intrin time:    3.8825      Error: 2.454130e-03
+Vector time:    4.3878      Error: 6.928125e-12
+
+Question 2
+
+Architecture: 4 processors, 1 CPU core per processor. AMD Opteron 63xx class CPU
+
+Output:
+
+sequential-scan took 0.969826s
+
+1 threads:
+parallel-scan took 0.734187s
+error = 0
+
+2 threads:
+parallel-scan took 0.379048s
+error = 0
+
+3 threads:
+parallel-scan took 0.296886s
+error = 0
+
+4 threads:
+parallel-scan took 0.241683s
+error = 0
