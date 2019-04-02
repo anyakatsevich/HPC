@@ -1,0 +1,55 @@
+Question 1
+
+Output:
+
+Reference time: 46.2063
+Taylor time:    3.9716      Error: 6.928125e-12
+Intrin time:    3.8825      Error: 2.454130e-03
+Vector time:    4.3878      Error: 6.928125e-12
+
+Question 2
+
+Output on access.cims.nyu.edu (4 processors. AMD Opteron 63xx class CPU)
+
+number of runs for each scan type = 50
+sequential-scan took 34.490425s
+
+1 threads:
+parallel-scan took 16.125087s, which is 0.467524 x sequential time
+error = 0
+
+2 threads:
+parallel-scan took 17.496338s, which is 0.507281 x sequential time
+error = 0
+
+3 threads:
+parallel-scan took 14.648504s, which is 0.424712 x sequential time
+error = 0
+
+4 threads:
+parallel-scan took 13.827414s, which is 0.400906 x sequential time
+error = 0
+
+-------------------------------------------------------------------------
+
+Output on box711 (4 processors. Intel(R) Core(TM) i7-4790 CPU)
+
+number of runs for each scan type = 50
+sequential-scan took 4.537683s
+
+1 threads:
+parallel-scan took 6.705327s, which is 1.477698 x sequential time
+error = 0
+
+2 threads:
+parallel-scan took 8.118350s, which is 1.789096 x sequential time
+error = 0
+
+3 threads:
+parallel-scan took 8.192497s, which is 1.805436 x sequential time
+error = 0
+
+4 threads:
+parallel-scan took 8.467105s, which is 1.865953 x sequential time
+error = 0
+
